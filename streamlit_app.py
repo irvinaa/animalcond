@@ -54,7 +54,11 @@ if st.button("Prediksi"):
                 st.write(f"**Hewan:** {animal}")
                 st.write(f"**Gejala Paling Mirip:** {best_row['combined_symptoms']}")
                 st.success(f"**Status Berbahaya:** {best_row['Dangerous']}")
-if best_row['Dangerous'].lower() == 'yes':
+
+danger_status = str(best_row['Dangerous']).strip().lower()
+if danger_status == 'yes':
     st.error("🚨 Gejala ini tergolong **berbahaya**. Segera periksakan hewan ke dokter hewan!")
-else:
+elif danger_status == 'no':
     st.info("✅ Gejala tidak tergolong berbahaya. Tetap pantau kondisi hewan secara berkala.")
+else:
+    st.warning("⚠️ Status bahaya tidak diketahui. Silakan konsultasikan dengan dokter hewan.")
