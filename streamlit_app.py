@@ -11,9 +11,6 @@ with open('animcond_vectorizer.sav', 'rb') as f:
 with open('animcond_model.sav', 'rb') as f:
     svm = pickle.load(f)
 
-with open('df.pkl', 'rb') as f:
-    df = pickle.load(f)
-
 # Fungsi preprocessing sesuai notebook
 def preprocess(text):
     # Ganti ini dengan versi lengkap preprocessing kamu
