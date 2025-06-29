@@ -52,7 +52,9 @@ if st.button("Prediksi"):
                 best_row = filtered_df.iloc[best_idx]
                 st.subheader("🔍 Hasil Prediksi")
                 st.write(f"**Hewan:** {animal}")
-                st.write(f"**Gejala Paling Mirip (dalam data):** {best_row['combined_symptoms']}")
-                st.markdown(f"**Paling mirip dengan hewan:** 🐾 {best_row['AnimalName']}")
-                st.markdown(f"**Dengan gejala:** {best_row['combined_symptoms']}")
+                st.write(f"**Gejala Paling Mirip:** {best_row['combined_symptoms']}")
                 st.success(f"**Status Berbahaya:** {best_row['Dangerous']}")
+if best_row['Dangerous'].lower() == 'yes':
+    st.error("🚨 Gejala ini tergolong **berbahaya**. Segera periksakan hewan ke dokter hewan!")
+else:
+    st.info("✅ Gejala tidak tergolong berbahaya. Tetap pantau kondisi hewan secara berkala.")
