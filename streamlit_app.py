@@ -1,6 +1,8 @@
 import pickle
 import numpy as np
+import pandas as pd
 import streamlit as st
+from sklearn.metrics.pairwise import cosine_similarity
 
 # Load model & data
 with open('animcond_vectorizer.sav', 'rb') as f:
@@ -9,9 +11,12 @@ with open('animcond_vectorizer.sav', 'rb') as f:
 with open('animcond_model.sav', 'rb') as f:
     svm = pickle.load(f)
 
+with open('df.pkl', 'rb') as f:
+    df = pickle.load(f)
+
 # Fungsi preprocessing sesuai notebook
 def preprocess(text):
-    # tambahkan fungsi asli kamu di sini
+    # Ganti ini dengan versi lengkap preprocessing kamu
     return text.lower()
 
 # UI
@@ -49,4 +54,3 @@ if st.button("Prediksi"):
                 st.write(f"**Klasifikasi Berbahaya:** {best_row['Dangerous']}")
     else:
         st.warning("❗ Mohon isi kedua kolom input.")
-
