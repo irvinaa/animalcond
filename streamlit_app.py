@@ -53,5 +53,5 @@ if st.button("Prediksi"):
                 st.subheader("🔍 Hasil Prediksi")
                 st.write(f"**Hewan:** {animal}")
                 st.write(f"**Gejala Paling Mirip (dalam data):** {best_row['combined_symptoms']}")
-                st.info(f" **Paling mirip dengan hewan:** {animal_display}\n\n💬 **Dengan gejala:** {best_row['combined_symptoms']}")
+                st.info(f"**Paling mirip dengan hewan:** {animal_display}\n\n💬 **Dengan gejala:** {best_row['combined_symptoms']}")
                 st.success(f"**Status Berbahaya:** {best_row['Dangerous']}")
