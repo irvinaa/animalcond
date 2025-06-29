@@ -31,12 +31,11 @@ symptoms = st.text_area("Masukkan gejala (eng):")
 
 if st.button("Prediksi"):
     if not animal or not symptoms:
-        st.warning("Silakan lengkapi jenis hewan dan gejala terlebih dahulu.")
+        st.warning("Lengkapi jenis hewan dan gejala terlebih dahulu.")
     else:
         processed_input = preprocess(symptoms)
         input_vector = vectorizer.transform([processed_input])
 
-        # Filter data hewan
         filtered_df = df[df['AnimalName'].str.lower() == animal.lower()]
 
         if filtered_df.empty:
@@ -54,4 +53,5 @@ if st.button("Prediksi"):
                 st.subheader("🔍 Hasil Prediksi")
                 st.write(f"**Hewan:** {animal}")
                 st.write(f"**Gejala Paling Mirip (dalam data):** {best_row['combined_symptoms']}")
+                st.write(f"**Gejala Paling Mirip (dalam data):** {best_row['combined_symptoms']} (Hewan: {best_row['AnimalName']})")
                 st.success(f"**Status Berbahaya:** {best_row['Dangerous']}")
