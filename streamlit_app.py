@@ -1,3 +1,4 @@
+pip install -r requirements.txt
 import pickle
 import numpy as np
 import streamlit as st
