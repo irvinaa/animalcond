@@ -55,10 +55,16 @@ if st.button("Prediksi"):
                 st.write(f"**Gejala Paling Mirip:** {best_row['combined_symptoms']}")
                 st.success(f"**Status Berbahaya:** {best_row['Dangerous']}")
 
-danger_status = str(best_row['Dangerous']).strip().lower()
-if danger_status == 'yes':
-    st.error("🚨 Gejala ini tergolong **berbahaya**. Segera periksakan hewan ke dokter hewan!")
-elif danger_status == 'no':
-    st.info("✅ Gejala tidak tergolong berbahaya. Tetap pantau kondisi hewan secara berkala.")
-else:
-    st.warning("⚠️ Status bahaya tidak diketahui. Silakan konsultasikan dengan dokter hewan.")
+                # ⬇️ Tambahkan pengecekan danger_status di sini
+                raw_danger = best_row['Dangerous']
+                if pd.isna(raw_danger):
+                    danger_status = 'unknown'
+                else:
+                    danger_status = str(raw_danger).strip().lower()
+
+                if danger_status == 'yes':
+                    st.error("🚨 Gejala ini tergolong **berbahaya**. Segera periksakan hewan ke dokter hewan!")
+                elif danger_status == 'no':
+                    st.info("✅ Gejala tidak tergolong berbahaya. Tetap pantau kondisi hewan secara berkala.")
+                else:
+                    st.warning("⚠️ Status bahaya tidak diketahui. Silakan konsultasikan dengan dokter hewan.")
